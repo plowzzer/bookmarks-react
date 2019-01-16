@@ -26,8 +26,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.bookmark)
-  return {bookmarks : state.bookmark}
+  console.log('This is the state',state)
+  return {bookmarks : state.bookmark.bookmarks}
 };
 
 const mapDispatchToProps = dispatch => {

@@ -1,0 +1,14 @@
+.App{
+  background: #F1F3F4;
+  font-family: 'Lato', sans-serif;
+}
+.fullscreen{
+  min-height: 100vh;
+}
+.main{
+  background-color: white;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+@import 'bookmark.scss'

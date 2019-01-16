@@ -1,28 +1,46 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import {connect} from 'react-redux';
+
+import BookmarkAdd from './components/BookmarkAdd.component';
+import BookmarkList from './components/BookmarkList.component';
+
+import BookmarkService from'./services/bookmark.service'
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="uk-container uk-flex uk-flex-middle uk-flex-center fullscreen">
+          <div className="main uk-width-1-1">
+            
+            <BookmarkAdd addBookmark={this.props.addBookmark}/>
+            <BookmarkList bookmarks={this.props.bookmarks} removeBookmark={this.props.removeBookmark}/>
+
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log(state.bookmark)
+  return {bookmarks : state.bookmark}
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addBookmark : (bookmark) => {
+      dispatch(BookmarkService.addBookmark(bookmark));      
+    },
+    removeBookmark : (bookmark) => {
+      dispatch(BookmarkService.removeBookmark(bookmark))
+    }
+  }
+}
+
+const AppContainer = connect(mapStateToProps,mapDispatchToProps)(App);
+
+export default AppContainer;

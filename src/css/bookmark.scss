@@ -1,0 +1,27 @@
+.bookmarkItem{
+  border-bottom: 2px solid #f5f5f5;
+  padding: 30px 0;
+  &:last-child{
+    border-bottom: none;
+  }
+  .bookmark-title{
+    color:#333;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 10px;
+  }
+  .bookmark-link{
+    color: #3F98F7;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+  .bookmark-tag{
+    margin-top:0;
+    background-color: #3568BB;
+    padding: 3px;
+    font-size: 75%;
+    color:white;
+    text-transform: uppercase;
+    display: flex;
+  }
+}

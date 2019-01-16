@@ -7,6 +7,7 @@ export default class BookmarkList extends Component{
   }
 
   render(){
+    console.log(this)
     return(
       <div className="uk-margin-large-top">
         <ul className="uk-list">

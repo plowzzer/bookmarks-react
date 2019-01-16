@@ -13,5 +13,12 @@ export default class BookmarkService {
       return bookmark
     }
   }
+
+  static filterBookmark(bookmark){
+    return dispatch => {
+      dispatch({type: 'FILTER_BOOKMARK', bookmark})
+      return bookmark
+    }
+  }
   
 }

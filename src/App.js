@@ -4,8 +4,9 @@ import {connect} from 'react-redux';
 
 import BookmarkAdd from './components/BookmarkAdd.component';
 import BookmarkList from './components/BookmarkList.component';
+import BookmarkFilter from './components/BookmarkFilter.component';
 
-import BookmarkService from'./services/bookmark.service'
+import BookmarkService from'./services/bookmark.service';
 
 class App extends Component {
 
@@ -16,6 +17,7 @@ class App extends Component {
           <div className="main uk-width-1-1">
             
             <BookmarkAdd addBookmark={this.props.addBookmark}/>
+            <BookmarkFilter bookmarks={this.props.bookmarks} filterBookmark={this.props.filterBookmark}/>
             <BookmarkList bookmarks={this.props.bookmarks} removeBookmark={this.props.removeBookmark}/>
 
           </div>
@@ -26,7 +28,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('This is the state',state)
   return {bookmarks : state.bookmark.bookmarks}
 };
 
@@ -37,6 +38,9 @@ const mapDispatchToProps = dispatch => {
     },
     removeBookmark : (bookmark) => {
       dispatch(BookmarkService.removeBookmark(bookmark))
+    },
+    filterBookmark : (bookmark) => {
+      dispatch(BookmarkService.filterBookmark(bookmark))
     }
   }
 }

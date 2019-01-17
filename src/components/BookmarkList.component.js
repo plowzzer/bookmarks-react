@@ -76,9 +76,7 @@ export class BookmarkList extends Component{
   }
 }
 
-const mapStateToProps = state => {
-  console.log(state)
-};
+const mapStateToProps = state => {};
 
 const mapDispatchToProps = dispatch => {
   return {

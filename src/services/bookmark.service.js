@@ -20,5 +20,12 @@ export default class BookmarkService {
       return bookmark
     }
   }
+
+  static removeTag(bookmark, tag){
+    return dispatch => {
+      dispatch({type: 'REMOVE_TAG', bookmark, tag})
+      return dispatch
+    }
+  }
   
 }

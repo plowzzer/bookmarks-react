@@ -22,12 +22,18 @@ export default class BookmarkAdd extends Component{
     }
 
     if(title && link && tags){
+
+      let string = tags.split(" ");
+      var stringArray = [];
+      for(var i =0; i < string.length; i++){
+        stringArray.push(string[i]);
+      }
       
       this.props.addBookmark(
         {
           title: title,
           link: link,
-          tags: tags
+          tags: stringArray
         }
       )
 

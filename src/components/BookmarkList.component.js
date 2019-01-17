@@ -14,7 +14,7 @@ export class BookmarkList extends Component{
   }
 
   render(){
-    if( this.props.filter !== undefined ){
+    if( this.props.filter.length !== 0 ){
       return(
         <div className="uk-margin-top">
           <ul className="uk-list">
@@ -32,7 +32,7 @@ export class BookmarkList extends Component{
                         })
                       }
                     </ul>
-                    
+
                     <button className="delete-btn" onClick={() => this.remove(bookmark)}>
                       <img src={trash_can} alt="delete icon"/> DELETE
                     </button>
@@ -77,6 +77,7 @@ export class BookmarkList extends Component{
 }
 
 const mapStateToProps = state => {
+  console.log(state)
 };
 
 const mapDispatchToProps = dispatch => {

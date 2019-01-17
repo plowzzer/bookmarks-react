@@ -36,12 +36,11 @@ class App extends Component {
             <div className="uk-grid-medium" data-uk-grid>
 
               <div className="uk-width-auto">
-                <button className="action-buttons" onClick={() => this.changeTo('add')}>
-                  {switcher ? <img src={add_selectedImage} alt="Add selected"/> : <img src={addImage} alt="Select to add bookmarks"/>}
-                </button>
-
                 <button className="action-buttons" onClick={() => this.changeTo('filter')}>
                   {switcher ? <img src={filterImage} alt="Filter selected"/> : <img src={filter_selectedImage} alt="Select to filter bookmarks"/>}
+                </button>
+                <button className="action-buttons" onClick={() => this.changeTo('add')}>
+                  {switcher ? <img src={add_selectedImage} alt="Add selected"/> : <img src={addImage} alt="Select to add bookmarks"/>}
                 </button>
               </div>
               

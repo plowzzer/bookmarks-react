@@ -19,6 +19,7 @@ const INITIAL_VALUES = [
 const BOOKMARK_LIST = 'BOOKMARK_LIST'
 const BOOKMARK_ADD = 'BOOKMARK_ADD'
 const BOOKMARK_REMOVE = 'BOOKMARK_REMOVE'
+const BOOKMARK_TAG_REMOVE = 'BOOKMARK_TAG_REMOVE'
 
 export function getList(){
   return {
@@ -35,5 +36,12 @@ export function addBookmark(bookmark){
 export function removeBookmark(bookmark){
   return {
     type: BOOKMARK_REMOVE, payload: bookmark
+  }
+}
+
+export function removeTag(bookmark, tag){
+  return dispatch => {
+    dispatch ({type: BOOKMARK_TAG_REMOVE, payload: {bookmark, tag}})
+    return dispatch
   }
 }

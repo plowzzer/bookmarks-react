@@ -9,7 +9,7 @@ import {createStore,applyMiddleware} from 'redux';
 //Middlewares
 // import promise from 'redux-promise'
 import multi from 'redux-multi'
-// import thunk from 'redux-thunk'
+import thunk from 'redux-thunk'
 
 //Reducers
 import reducers from './main/reducers'
@@ -20,7 +20,7 @@ import {Provider} from 'react-redux';
 import App from './main/App';
 import * as serviceWorker from './serviceWorker';
 
-const store = applyMiddleware(multi)(createStore)(reducers)
+const store = applyMiddleware(multi, thunk)(createStore)(reducers)
 
 ReactDOM.render(
   (

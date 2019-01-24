@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class BookmarkList extends Component{
+export default class BookmarkTag extends Component{
   removeTag(bookmark, tag){
     this.props.removeTag(bookmark, tag)
   }

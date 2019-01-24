@@ -4,7 +4,7 @@ import trash_can from '../asstes/trash-can.svg'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { getList, removeBookmark } from './bookmarkActions'
+import { getList, removeBookmark, removeTag } from './bookmarkActions'
 
 import BookmarkTag from './BookmarkTag'
 
@@ -41,7 +41,7 @@ class BookmarkList extends Component {
   }
 
   render(){
-    console.log(this.props.list)
+    console.log('render')
     return(
       <ul className="uk-list">
         {this.renderList()}
@@ -51,5 +51,5 @@ class BookmarkList extends Component {
 }
 
 const mapStateToProps = state => ({list: state.bookmarks.list})
-const mapDispatchToProps = dispatch => bindActionCreators({getList, removeBookmark}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({getList, removeBookmark, removeTag}, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(BookmarkList)

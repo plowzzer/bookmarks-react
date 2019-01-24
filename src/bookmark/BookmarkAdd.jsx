@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import UIkit from 'uikit'
-
+import { bindActionCreators } from 'redux'
 import If from '../common/operator/if'
+
+import { addBookmark } from './bookmarkActions'
 
 class BookmarkAdd extends Component{
 
@@ -71,4 +73,5 @@ class BookmarkAdd extends Component{
 }
 
 const mapStateToProps = state => ({tab: state.tab})
-export default connect(mapStateToProps)(BookmarkAdd)
+const mapDispatchToPtops = dispatch => bindActionCreators({addBookmark}, dispatch)
+export default connect(mapStateToProps, mapDispatchToPtops)(BookmarkAdd)

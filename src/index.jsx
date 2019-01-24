@@ -4,16 +4,23 @@ import ReactDOM from 'react-dom';
 import './css/main.scss'
 
 import {Router,Route,browserHistory} from 'react-router';
-import {createStore,applyMiddleware,combineReducers} from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import {Provider} from 'react-redux';
-import {bookmark} from './reducers/bookmarks.reducer'
+import {createStore,applyMiddleware} from 'redux';
 
-import App from './App';
+//Middlewares
+// import promise from 'redux-promise'
+import multi from 'redux-multi'
+// import thunk from 'redux-thunk'
+
+//Reducers
+import reducers from './main/reducers'
+
+import {Provider} from 'react-redux';
+
+
+import App from './main/App';
 import * as serviceWorker from './serviceWorker';
 
-const reducers = combineReducers({bookmark});
-const store = createStore(reducers,applyMiddleware(thunkMiddleware));
+const store = applyMiddleware(multi)(createStore)(reducers)
 
 ReactDOM.render(
   (

@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import UIkit from 'uikit'
 
-export default class BookmarkAdd extends Component{
+import If from '../common/operator/if'
+
+class BookmarkAdd extends Component{
 
   addNew = (e) => {
     e.preventDefault();
@@ -47,19 +50,25 @@ export default class BookmarkAdd extends Component{
   }
 
   render(){
+    const selected = this.props.tab.selected === this.props.id
     return(
-      <form className="uk-grid-small" data-uk-grid onSubmit={this.addNew}>
-        <div className="uk-width-1-3">
-          <input className="uk-input" type="text" placeholder="Title" ref={input => this.title = input} />
-        </div>
-        <div className="uk-width-1-3">
-          <input className="uk-input" type="text" placeholder="Link" ref={input => this.link = input} />
-        </div>
-        <div className="uk-width-1-3">
-          <input className="uk-input" type="text" placeholder="Tags" ref={input => this.tags = input} />
-        </div>      
-        <button className="uk-hidden"  type="submit"></button>       
-      </form>
+      <If test={selected}>
+        <form className="uk-grid-small" data-uk-grid onSubmit={this.addNew}>
+          <div className="uk-width-1-3">
+            <input className="uk-input" type="text" placeholder="Title" ref={input => this.title = input} />
+          </div>
+          <div className="uk-width-1-3">
+            <input className="uk-input" type="text" placeholder="Link" ref={input => this.link = input} />
+          </div>
+          <div className="uk-width-1-3">
+            <input className="uk-input" type="text" placeholder="Tags" ref={input => this.tags = input} />
+          </div>      
+          <button className="uk-hidden"  type="submit"></button>       
+        </form>
+      </If>
     )
   }
 }
+
+const mapStateToProps = state => ({tab: state.tab})
+export default connect(mapStateToProps)(BookmarkAdd)

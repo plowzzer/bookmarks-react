@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { filter } from '../bookmark/bookmarkActions'
+import { filter, add } from '../bookmark/bookmarkActions'
 
 import BookmarkAdd from '../bookmark/BookmarkAdd';
 import BookmarkList from '../bookmark/BookmarkList';
@@ -39,7 +39,7 @@ class App extends Component {
               </TabsSelect>
               <TabsContent>
                 <BookmarkFilter id={'filter'} bookmarks={this.props.bookmarks} onChange={this.props.filter}/>
-                <BookmarkAdd id={'add'} addBookmark={this.props.addBookmark}/>
+                <BookmarkAdd id={'add'} addBookmark={this.props.addBookmark} onSubmit={this.props.add}/>
               </TabsContent>
             </Tabs>
 
@@ -55,5 +55,5 @@ class App extends Component {
 }
 
 
-const mapDispatchToProps = dispatch => bindActionCreators({ filter }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ filter, add }, dispatch)
 export default connect(null, mapDispatchToProps)(App)

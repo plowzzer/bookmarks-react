@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import If from '../common/operator/if'
 
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { reduxForm, Field } from 'redux-form'
 
 
@@ -16,7 +15,7 @@ class BookmarkFilter extends Component{
     const { handleSubmit } = this.props
     return(
       <If test={selected}>
-        <form role="form" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <Field name="search" component={myInput} placeholder="Filtrar por tag" type="text" />
         </form>     
       </If>

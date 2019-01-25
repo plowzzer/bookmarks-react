@@ -12,7 +12,12 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, list: action.payload }
 
     case BOOKMARK_ADD:
-      return { bookmarks: [...state.bookmarks, action.bookmark] }
+      console.log(state)
+      console.log({list: [...state.list, action.payload]})
+      return { 
+        list: [...state.list, action.payload] ,
+        filtred: []
+      }
 
     case BOOKMARK_REMOVE:
       return {...state, list: state.list.filter(bookmark => bookmark.id !== action.payload.id)}

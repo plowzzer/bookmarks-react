@@ -20,17 +20,17 @@ class BookmarkList extends Component {
 
   renderList(){
     let list = []
-    {
-      if(this.props.filtred.length>0){
-        list = this.props.filtred
-      }else if(this.props.filtred.length === 0){
-        if(this.props.list){
-          list = this.props.list
-        }else{
-          list = []
-        }
+    
+    if(this.props.filtred.length>0){
+      list = this.props.filtred
+    }else if(this.props.filtred.length === 0){
+      if(this.props.list){
+        list = this.props.list
+      }else{
+        list = []
       }
     }
+    
     return list.map(bookmark => (
       <li key={bookmark.id} className="bookmarkItem">
         <h4 className="bookmark-title">{bookmark.title}</h4>

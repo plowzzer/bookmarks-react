@@ -19,7 +19,18 @@ class BookmarkList extends Component {
   }
 
   renderList(){
-    const list = this.props.list || []
+    let list = []
+    {
+      if(this.props.filtred.length>0){
+        list = this.props.filtred
+      }else if(this.props.filtred.length === 0){
+        if(this.props.list){
+          list = this.props.list
+        }else{
+          list = []
+        }
+      }
+    }
     return list.map(bookmark => (
       <li key={bookmark.id} className="bookmarkItem">
         <h4 className="bookmark-title">{bookmark.title}</h4>
@@ -41,7 +52,6 @@ class BookmarkList extends Component {
   }
 
   render(){
-    console.log('render')
     return(
       <ul className="uk-list">
         {this.renderList()}
@@ -50,6 +60,8 @@ class BookmarkList extends Component {
   }
 }
 
-const mapStateToProps = state => ({list: state.bookmarks.list})
+const mapStateToProps = state => {
+  return {list: state.bookmarks.list, filtred: state.bookmarks.filtred}
+}
 const mapDispatchToProps = dispatch => bindActionCreators({getList, removeBookmark, removeTag}, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(BookmarkList)

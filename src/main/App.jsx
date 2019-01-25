@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
+import { filter } from '../bookmark/bookmarkActions'
 
 import BookmarkAdd from '../bookmark/BookmarkAdd';
 import BookmarkList from '../bookmark/BookmarkList';
@@ -34,7 +38,7 @@ class App extends Component {
                 <TabsButtons target={'add'} icon={addImage} iconSelected={add_selectedImage} alt="Select to add bookmarks"></TabsButtons>
               </TabsSelect>
               <TabsContent>
-                <BookmarkFilter id={'filter'} bookmarks={this.props.bookmarks} filterBookmark={this.props.filterBookmark}/>
+                <BookmarkFilter id={'filter'} bookmarks={this.props.bookmarks} onChange={this.props.filter}/>
                 <BookmarkAdd id={'add'} addBookmark={this.props.addBookmark}/>
               </TabsContent>
             </Tabs>
@@ -51,4 +55,5 @@ class App extends Component {
 }
 
 
-export default App;
+const mapDispatchToProps = dispatch => bindActionCreators({ filter }, dispatch)
+export default connect(null, mapDispatchToProps)(App)

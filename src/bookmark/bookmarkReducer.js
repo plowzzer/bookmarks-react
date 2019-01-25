@@ -1,9 +1,10 @@
-const INITIAL_STATE = {list: []}
+const INITIAL_STATE = {list: [], filtred: []}
 
 const BOOKMARK_LIST = 'BOOKMARK_LIST'
 const BOOKMARK_ADD = 'BOOKMARK_ADD'
 const BOOKMARK_REMOVE = 'BOOKMARK_REMOVE'
 const BOOKMARK_TAG_REMOVE = 'BOOKMARK_TAG_REMOVE'
+const BOOKMARK_FILTER = 'BOOKMARK_FILTER'
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -29,8 +30,22 @@ export default (state = INITIAL_STATE, action) => {
 
       return { ...state, list: newState.list }
 
+    case BOOKMARK_FILTER:
+      const filter = action.payload.search || ''
+      if(filter.length > 1){
+        let filter = action.payload.search.toLowerCase()
+        let filteredResult = state.list.filter((item) => {
+          return (item.tags.find(tag => tag.toLowerCase().indexOf(filter) !== -1));
+        });
+        return {
+          ...state, filtred: filteredResult
+        }
+      }else{
+        return{...state, filtred: []}
+      }
+
+
     default:
       return state
   }
 }
-

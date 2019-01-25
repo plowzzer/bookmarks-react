@@ -1,5 +1,8 @@
 import React from 'react'
 
-export default props => (
-    <input {...props.input} className='uk-input' placeholder={props.placeholder} type={props.type} />
+export default ({ input, placeholder, type, meta: { touched } }) => (
+	<div>
+		<input {...input} className='uk-input' placeholder={placeholder} type={type}/>
+		{touched}
+	</div>
 )
